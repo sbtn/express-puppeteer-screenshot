@@ -1,13 +1,18 @@
 // TODO Multiple devices.
 
+// Puppeteer
 const puppeteer = require('puppeteer');
 const devices = require('puppeteer/DeviceDescriptors');
+
+// Express
 const express = require('express');
 const bodyParser = require('body-parser');
+const app = express();
+
+// Express-validator
 const { check, validationResult } = require('express-validator/check');
 const { matchedData } = require('express-validator/filter');
-const path = require('path');
-const app = express();
+
 
 // Support parsing of application/x-www-form-urlencoded post data
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -27,8 +32,6 @@ app.post('/screen', [
   const site = valid.site;
   const device = valid.device;
   console.log(valid);
-
-  const filePath = path.join(__dirname, 'public', `${device}.png`);
 
   const browser = await puppeteer.launch({
     headless: true
