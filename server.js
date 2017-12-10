@@ -31,7 +31,7 @@ app.post('/screen', [
   const valid = matchedData(req);
   const site = valid.site;
   const device = valid.device;
-  console.log(valid);
+  //console.log(valid);
 
   const browser = await puppeteer.launch({
     headless: true
@@ -67,3 +67,5 @@ app.get('/devices', (req, res) => {
 });
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'))
+
+module.exports.app = app;
